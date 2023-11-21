@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+
+/* styling for the app */
+.app{
+  display: flex;
+  flex-direction: row;
+  padding-top: 3px;
+}
+
+/* styling for the leftside of App(contact list and profile header div) */
+
+.leftside{
+  display: block;
+ width: 400px;
+ box-sizing: content-box;
+}
+
+/* dp pictures of all the contacts */
+.dp{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-left: 10px;
+  object-fit: cover;
+  
+}
+/* a single contact card styling */
+.contactcard{
+  display: flex;
+  height: 5rem;
+  box-sizing: content-box;
+   width: 400px; 
+ background-color: whitesmoke;
+ 
+ border-top: 0.1px solid silver;
+ margin: 2px;
+ cursor: pointer;
+}
+
+.name{
+  font-size:larger;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+
+.msg{
+  margin-left: 20px;
+}
+
+/* styling for the profile of user */
+.profileheader{
+  box-sizing: content-box;
+  display: flex;
+  height: 5rem;
+  background-color: forestgreen;
+
+}
+.dpName{
+  font-size: large;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 25px;
+  margin-top: 24px;
+  
+}
+
+.profileDp{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-top: 14px;
+  margin-left: 15px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+/* stlying for the search box */
+.searchbox{
+  box-sizing:border-box;
+  height: 2rem;
+   width: 350px; 
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+}
+
+/* contact list styling   */
+
+ .list{
+  height: 520px;
+  width: 400px;
+  overflow-y:auto;
+  
+ }
+
+ /* making responsive to other screens */
+ @media screen and (max-width: 792px) {
+  .leftside {
+    width: 300px;
+  }
+  .searchbox{
+    width: 250px;
+  }
+  .contactcard{
+    width: 300px;
+  }
+}
+
+
+
+ 
+
+/* right side styling  */
+
+.rightSide{
+  display: flex;
+   
+}
+
+/* profile header of the selected contact */
+.rightprofileheader{
+  box-sizing: content-box;
+  display: flex;
+   width: 70vw;
+  height: 5rem;
+  background-color: silver;
+}
+
+
+.ChatSection {
+  display: flex;
+  flex-direction: column;
+  height: 555px;
+  box-sizing: content-box;
+}
+
+.message-box{
+  height: 530px;
+  width: 72vw;
+  box-sizing: content-box;
+  overflow-y: auto;
+}
+
+
+
+
+
+.no-chat-background {
+  background-color: #a04bb9;
+}
+
+
+
+
+
+
+
+/* chat bubbles css */
+.left-bubble {
+  display: flex;
+  margin-bottom: 16px;
+  max-width: 70%;
+}
+
+.left-bubble > div {
+  background-color:silver;
+  border-radius: 8px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.left-bubble p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.left-bubble p:nth-child(1) {
+  font-weight: bold;
+}
+
+.left-bubble p:nth-child(2) {
+  color: #000;
+}
+
+.left-bubble p:nth-child(3) {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+
+
+
+/* right message  bubble */
+.right-bubble {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin-bottom: 16px;
+  max-width: 95%;
+}
+
+.right-bubble > div {
+  background-color: #dcf8c6;
+  border-radius: 8px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.right-bubble p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.right-bubble p:nth-child(1) {
+  font-weight: bold;
+}
+
+.right-bubble p:nth-child(2) {
+  color: #000;
+}
+
+.right-bubble p:nth-child(3) {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+/* making the msg responsive to diff screen */
+@media screen and (max-width: 792px) {
+  .right-bubble {
+    width: 200px;
+    padding: 6px;
+    margin: 10px 0;
+    max-width: 70%;
+  }
+}
+
+
+
+/* message-input */
+/* Add your general styles for the message input box here */
+
+.message-input-box {
+  height: 100px;
+  width: 70vw;
+  background-color: silver;
+  box-sizing: content-box;
+
+}
+
+/* Style for the input and send button */
+.message-input-box form {
+  margin-left: 20px;
+ margin-top: 40px;
+}
+
+.message-input-box input {
+  width: 50vw;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.message-input-box .send-button {
+  background-color: #25d366; /* WhatsApp green color */
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.message-input-box .send-button:hover {
+  background-color: #128c7e; /* Darker shade of green on hover */
+}
+
+
+
+@media screen and (max-width: 792px) {
+  .message-input-box .send-button {
+    width: 30px;
+    padding: 0px;
+   
+    
+  }
+  .message-input-box {
+    
+    width: 70vw;
+  }
+
+  .message-input-box input {
+    width: 20vw;
+     
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+     
+    
+  }
+}
+
+
+
+
+
+ 
