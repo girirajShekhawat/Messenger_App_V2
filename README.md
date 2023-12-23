@@ -6,8 +6,8 @@ https://messenger-app-y7vi.onrender.com/
 
 This front-end project is built with React and features a clean and user-friendly UI inspired by WhatsApp. The primary functionalities include the ability to chat with friends and search for friends within the application. React Hooks are utilized for efficient state management.
 
-![Chat App Screenshot](chatAppscreenshot.png)
 
+![chatAppscreenshot](https://github.com/girirajShekhawat/Messenger_App/assets/138613680/f0e4a46e-5696-4b6d-a550-4c96d1674b0d)
 
 
 # Functionality
