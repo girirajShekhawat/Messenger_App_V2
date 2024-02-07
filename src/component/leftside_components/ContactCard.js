@@ -9,14 +9,18 @@ export default function ContactCard(props) {
   const length = lastMsg.length;
 
   return (
-    <div className='contactcard' onClick={() => handleClickOnContact(item)}>
-      <img src={image} className='dp' alt="Img" />
-      <div>
-        <div className='name'>
+    <div className='flex   h-[72px] w-full  bg-[#fff] box-border' onClick={() => handleClickOnContact(item)}>
+      
+      <div className='flex items-center w-[80px] h-[72px] pl-[11px] pr-[11px]  '>
+      <img src={image} className='h-[49px] w-[49px] rounded-full bg-auto  ' alt="Img" />
+      </div>
+       
+      <div className='w-full  pr-[15px] border-b-[0.8px] border-solid border-bg-[#eceff1]'>
+        <div className=' '>
           {name}
         </div>
 
-        <div className='msg'>
+        <div className=' '>
           {/* writing the last msg */}
           {length > 0 ?
             <> {lastMsg[length - 1].text} </>

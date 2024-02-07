@@ -18,8 +18,12 @@ code {
 }
 
 ::-webkit-scrollbar{
-  width: 6px;
+  width: 5px;
   height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;  
 }
 
 /* styling for the app */
@@ -31,11 +35,7 @@ code {
 
 /* styling for the leftside of App(contact list and profile header div) */
 
-.leftside{
-  display: block;
- width: 400px;
- box-sizing: content-box;
-}
+ 
 
 /* dp pictures of all the contacts */
 .dp{
@@ -60,16 +60,9 @@ code {
  cursor: pointer;
 }
 
-.name{
-  font-size:larger;
-  font-weight: bold;
-  margin-left: 20px;
-}
+ 
 
-
-.msg{
-  margin-left: 20px;
-}
+ 
 
 /* styling for the profile of user */
 .profileheader{
@@ -102,7 +95,7 @@ code {
 /* stlying for the search box */
 .searchbox{
   box-sizing:border-box;
-  height: 2rem;
+ 
    width: 350px; 
   margin-left: 25px;
   margin-right: 25px;
@@ -117,13 +110,13 @@ code {
 
  .list{
   height: 520px;
-  width: 400px;
+   
   overflow-y:auto;
   
  }
 
  /* making responsive to other screens */
- @media screen and (max-width: 792px) {
+ /* @media screen and (max-width: 792px) {
   .leftside {
     width: 300px;
   }
@@ -133,7 +126,7 @@ code {
   .contactcard{
     width: 300px;
   }
-}
+} */
 
 
 

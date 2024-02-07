@@ -49,8 +49,17 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <div className="leftside">
+    <div className=" flex 2xl:justify-center ">
+     
+     {/* <span className="2xl:bg-gradient-to-b from-[#00a884] from-10% to-[#e1e1de] to-10% h-screen w-screen z-0"></span> */}
+     <div className="z-0 flex flex-col  ">
+     <span className="block bg-[#00a884] h-[127px] w-screen "></span>
+     <span className="block  bg-[#e1e1de]    h-screen w-screen "></span>
+     </div>
+      
+      
+    <div className="flex z-10 absolute 2xl:my-[19px] w-[1500px]  ">
+      <div className="min-w-[300px] w-[467px]">
         <ProfileHeader profile={profile} />
         <SearchBar handleSearch={handleSearch} searchContact={searchContact} />
         {showSearchResult ? (
@@ -77,6 +86,31 @@ function App() {
         <div></div>
       )}
     </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 }
 
