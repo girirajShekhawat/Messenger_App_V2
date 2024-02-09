@@ -1,57 +1,51 @@
 
-import React, { useState } from "react";
-import { data } from "./data";
-import ContactList from "./leftside_components/ContactList";
-import ProfileHeader from "./leftside_components/ProfileHeader";
-import SearchBar from "./leftside_components/SearchBar";
-import SearchResultRender from "./leftside_components/SearchResultRender";
-import RightComponent from "./Rightside_components/RightComponent";
+import React from "react";
+ 
+ import { BrowserRouter ,Route ,Routes} from "react-router-dom";
+ 
+import SignIn from "../pages/SignIn";
+import Signup from "../pages/Signup";
+import Home from "../pages/Home";
 
 function App() {
-  const [searchContact, setSearchContact] = useState("");
-  const [showSearchResult, setShowSearchResult] = useState(false);
-  const [filteredContact, setFilteredContact] = useState([]);
-  const [showRightSide, setRightSide] = useState(false);
-  const [selectedContact, setSelectedContact] = useState({});
-  
-  // users data
-  const { profile } = data;
-  // all the contacts of the user
-  const contacts = profile.contacts;
-
-  // handling the search name
-  const handleSearch = (event) => {
-    setSearchContact(event.target.value);
-    console.log(event.target.value);
-    handleSearchResult();
-  };
-
-  // handling the search result
-  const handleSearchResult = () => {
-    // filtering out the contacts according to the search
-    const filteredContacts = contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(searchContact.toLowerCase())
-    );
-    setFilteredContact(filteredContacts);
-    setShowSearchResult(true);
-  };
-
-  // handling the click on contactCard
-  const handleClickOnContact = (contact) => {
-    setRightSide(true);
-    setSelectedContact(contact);
-  };
-
-  // handle Search Result Click
-  const handleSearchResultClick = (contact) => {
-    setRightSide(true);
-    setSelectedContact(contact);
-  };
+   
 
   return (
-    <div className=" flex 2xl:justify-center ">
+   
+ <BrowserRouter>
+ <Routes>
+  <Route path="/" element={<SignIn/>}/>
+  <Route path="signup" element={<Signup/>}/>
+  <Route path="home" element={<Home/>}/>
+ </Routes>
+ </BrowserRouter>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* <div className=" flex 2xl:justify-center ">
      
-     {/* <span className="2xl:bg-gradient-to-b from-[#00a884] from-10% to-[#e1e1de] to-10% h-screen w-screen z-0"></span> */}
+     <span className="2xl:bg-gradient-to-b from-[#00a884] from-10% to-[#e1e1de] to-10% h-screen w-screen z-0"></span>  
      <div className="z-0 flex flex-col  ">
      <span className="block bg-[#00a884] h-[127px] w-screen "></span>
      <span className="block  bg-[#e1e1de]    h-screen w-screen "></span>
@@ -86,32 +80,5 @@ function App() {
         <div></div>
       )}
     </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  );
-}
-
-export default App;
+      </div>  
+      */
