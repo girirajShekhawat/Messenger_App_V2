@@ -12,7 +12,7 @@ const intialState={
 
 const userSlice= createSlice({
    name:'user',
-   initialState,
+   intialState,
    reducers:{
    registerUser:{},
    signInUser:{}
