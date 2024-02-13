@@ -5,7 +5,7 @@ import { tokenName ,url} from "./apiUrl"
 
 const CustomFetch= async (url,{body, ...customConfig})=>{
     const token=window.localStorage.getItem(tokenName)
- 
+   
 const headers={
     "content-type":"application/json",
     "Accept":"application/json"
@@ -23,31 +23,48 @@ const config={
 }
 
 if(body){
-    config.body=json.toString(body)
+    config.body=JSON.stringify(body)
+     
     
 }
     try {
       const res=  await fetch(url,config);
       const data=await res.json()
-      console.log(data)
-      return data;
+        if(data.success){
+            return  {
+                data:data.data,
+                success:true
+            }
+        }
+
+        throw  new Error(data.msg)
     } catch (error) {
         console.log(error.message);
-        return error.message
+        return {
+            success:false,
+            message:error.message,
+        }
+       
     }
 }
 
 
 const signup=(data)=>{
+    
     return CustomFetch(url.signup,{
-        data,
+        body:data,
         method:"post",
     })
 }
 
 const login= (data)=>{
-  return  CustomFetch(url.login,{data,
+  return  CustomFetch(url.login,{
+body:data,
 method:"post"
 })
 }
 
+export {
+    signup,
+    login
+}

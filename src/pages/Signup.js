@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
- 
+import { signup } from '../Api';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
-    const { register, handleSubmit, formState: { errors } } = useForm();  
-    const dispatch = useDispatch();
- 
+    const [error, setError]=useState(false)
+    const { register, handleSubmit, formState: { errors  } } = useForm();  
+    const dispatch = useDispatch(); 
+    const navigation=useNavigate();
 
-    const onSubmit = (data) => {
-        console.log(data);
-       
-       
+    const onSubmit = async (data) => {
+        setError(false)
+        const response=await signup(data)
+      if(response.success){
+        // send a flash message of successfull
+         navigation("/")
+      }
+       setError(true)
+    }
+
+    if(error){
+        <p>some thing went wrong</p>
     }
 
     return (
