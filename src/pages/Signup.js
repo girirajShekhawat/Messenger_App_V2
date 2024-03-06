@@ -47,6 +47,7 @@ function Signup() {
                 <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
                 {error && <p className="text-red-500 mb-4">Something went wrong</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
+                   
                     <input
                         className="border border-gray-300 rounded-md   p-2 mb-4 w-full focus:outline-none focus:border-[#00a884]"
                         type='file'
@@ -106,7 +107,7 @@ function Signup() {
                         })}
                          
                     />
-                    <button type="button"   className="absolute top-0 right-0 mt-2 mr-2" onClick={togglePasswordVisibility} >{showPassword ? "Hide" :"Show" }</button>
+                    <button type="button"   className="absolute top-0 right-0 mt-2 mr-2 text-lg font-medium" onClick={togglePasswordVisibility} >{showPassword ? "Hide" :"Show" }</button>
                     {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                    </div>
 

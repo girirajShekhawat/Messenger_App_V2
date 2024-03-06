@@ -9,7 +9,7 @@ function SignIn(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [error, setError] = useState("");
-    const { register, handleSubmit, formState} = useForm();
+    const { register, handleSubmit,reset, formState} = useForm();
     const {errors}=formState
     
     const handleClick=()=>{
@@ -20,7 +20,7 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
-        
+        reset();
         navigate("/home")
       }
     };
