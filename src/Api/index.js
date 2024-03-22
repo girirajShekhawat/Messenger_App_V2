@@ -13,6 +13,7 @@ const headers={
 
 if(token){
     headers.authorization=`Bearer${token}`
+     
 }
 const config={
     ...customConfig,
@@ -64,7 +65,15 @@ method:"post"
 })
 }
 
+const searchUser=(data)=>{
+    return CustomFetch(`${url.searchUser}?search=${data}`,{
+        method:"get"
+    })
+
+}
+
 export {
     signup,
-    login
+    login,
+    searchUser
 }

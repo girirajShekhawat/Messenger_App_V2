@@ -4,7 +4,7 @@ import { useAppState } from '../Contex/stateProvider';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'; 
 import { login } from '../Api'; 
-
+import { tokenName } from '../Api/apiUrl';
 function SignIn(props) {
     const navigate = useNavigate();
    const {setUser,user}=useAppState();
@@ -20,10 +20,12 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
+        console.log(res)
         //setting the user in localStorage and setting it up in the state also
     setUser(res?.data.user)
    
     localStorage.setItem("userInfo",JSON.stringify(res.data.user))
+    localStorage.setItem(tokenName,res.data.accessToken)
         reset();
         navigate("/home")
       }

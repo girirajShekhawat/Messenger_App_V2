@@ -6,15 +6,15 @@ import SearchResultRender from '../component/leftside_components/SearchResultRen
 import ContactList from '../component/leftside_components/ContactList';
 import RightComponent from '../component/Rightside_components/ChatSection';
 import { data } from '../component/data';
-
+import { useAppState } from '../Contex/stateProvider';
 function Home() {
     const [searchContact, setSearchContact] = useState("");
     const [showSearchResult, setShowSearchResult] = useState(false);
     const [filteredContact, setFilteredContact] = useState([]);
     const [showRightSide, setRightSide] = useState(false);
     const [selectedContact, setSelectedContact] = useState({});
-
-
+    const {user}=useAppState();
+     console.log(user)
       // users data
   const { profile } = data;
   // all the contacts of the user
@@ -29,10 +29,6 @@ function Home() {
 
   // handling the search result
   const handleSearchResult = () => {
-    // filtering out the contacts according to the search
-    const filteredContacts = contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(searchContact.toLowerCase())
-    );
     setFilteredContact(filteredContacts);
     setShowSearchResult(true);
   };
@@ -63,7 +59,7 @@ function Home() {
       
     <div className="flex z-10 absolute 2xl:my-[19px] w-[1500px]  ">
       <div className="min-w-[300px] w-[467px]">
-        <ProfileHeader profile={profile} />
+        <ProfileHeader profile={user} />
         <SearchBar handleSearch={handleSearch} searchContact={searchContact} />
         {showSearchResult ? (
           <>
