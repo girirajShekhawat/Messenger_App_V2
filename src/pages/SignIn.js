@@ -1,13 +1,13 @@
  
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+ 
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'; 
 import { login } from '../Api'; 
 
 function SignIn(props) {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+   
     const [error, setError] = useState("");
     const { register, handleSubmit,reset, formState} = useForm();
     const {errors}=formState
@@ -20,6 +20,7 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
+        console.log(res)
         reset();
         navigate("/home")
       }

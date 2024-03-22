@@ -8,14 +8,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { signup } from '../Api';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
     const [error, setError] = useState(false);
     const [showPassword, setShowPassword]=useState(false)
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
-    const dispatch = useDispatch();
+   
     const navigation = useNavigate();
 
     const onSubmit = async (data) => {
