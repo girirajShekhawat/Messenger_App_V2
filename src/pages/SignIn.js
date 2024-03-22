@@ -1,13 +1,13 @@
  
 import React, { useState } from 'react';
- 
+import { useAppState } from '../Contex/stateProvider'; 
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'; 
 import { login } from '../Api'; 
 
 function SignIn(props) {
     const navigate = useNavigate();
-   
+   const {setUser,user}=useAppState();
     const [error, setError] = useState("");
     const { register, handleSubmit,reset, formState} = useForm();
     const {errors}=formState
@@ -20,7 +20,10 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
-        console.log(res)
+        //setting the user in localStorage and setting it up in the state also
+    setUser(res?.data.user)
+   
+    localStorage.setItem("userInfo",JSON.stringify(res.data.user))
         reset();
         navigate("/home")
       }

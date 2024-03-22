@@ -1,7 +1,7 @@
 
 import React from "react";
  
- import { BrowserRouter ,Route ,Routes} from "react-router-dom";
+ import {Route ,Routes} from "react-router-dom";
  
 import SignIn from "../pages/SignIn";
 import Signup from "../pages/Signup";
@@ -12,13 +12,13 @@ function App() {
 
   return (
    
- <BrowserRouter>
+ 
  <Routes>
   <Route path="/" element={<SignIn/>}/>
   <Route path="signup" element={<Signup/>}/>
   <Route path="home" element={<Home/>}/>
  </Routes>
- </BrowserRouter>
+ 
   );
 }
 
