@@ -6,8 +6,10 @@ const ChatContext=createContext();
 const StateProvider=({children})=>{
     const navigate=useNavigate();
     const [user,setUser]=useState();
+    const [searchedUserResult,setSearchedUserResult]=useState([]);
     
-    
+
+    //this will confirm that is user loged in or not 
 useEffect(()=>{
     const userInfo= JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
@@ -19,7 +21,9 @@ useEffect(()=>{
 
     return(
         <ChatContext.Provider value={{user,
-        setUser}}>{children}</ChatContext.Provider>
+                                     setUser,
+                                     searchedUserResult,
+                                     setSearchedUserResult}}>{children}</ChatContext.Provider>
     )
 }
 

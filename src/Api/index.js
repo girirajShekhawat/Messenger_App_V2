@@ -25,8 +25,7 @@ const config={
 
 if(body){
     config.body=JSON.stringify(body)
-     
-    
+ 
 }
     try {
       const res=  await fetch(url,config);

@@ -1,17 +1,19 @@
-
-import React from 'react';
+import { useAppState } from '../../Contex/stateProvider';
+import React, { useEffect } from 'react';
 
 export default function SearchResultRender({ filteredContact, handleSearchResultClick }) {
-
-  console.log(filteredContact);
-  console.log(typeof filteredContact);
+const {searchedUserResult}=useAppState();
+console.log(searchedUserResult)
+ useEffect(()=>{
+  console.log("this is from the useEffect hook",searchedUserResult)
+ },[searchedUserResult])
 
   return (
     <div className='list'>
-      {filteredContact.map((contact) => (
+      {searchedUserResult.map((contact) => (
         <div className='contactcard' onClick={() => handleSearchResultClick(contact)}>
           <div>
-            <img src={contact.image} className='dp' alt='profileImage' />
+            <img src={contact.avatar} className='dp' alt='profileImage' />
           </div>
           <div>
             <p className='name'> {contact.name} </p>

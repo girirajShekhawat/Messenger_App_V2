@@ -22,14 +22,15 @@ function Home() {
 
   // handling the search name
   const handleSearch = (event) => {
-    setSearchContact(event.target.value);
-    console.log(event.target.value);
+    //setSearchContact(event.target.value);
+   // console.log(event.target.value);
     handleSearchResult();
   };
 
   // handling the search result
-  const handleSearchResult = () => {
-    setFilteredContact(filteredContacts);
+  const handleSearchResult = (searcheduser) => {
+    console.log("this is from the setfiltered contacts" ,typeof searcheduser , searcheduser)
+   // setFilteredContact(searcheduser);
     setShowSearchResult(true);
   };
 
