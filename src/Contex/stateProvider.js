@@ -7,6 +7,7 @@ const StateProvider=({children})=>{
     const navigate=useNavigate();
     const [user,setUser]=useState();
     const [searchedUserResult,setSearchedUserResult]=useState([]);
+    const [isLoading, setLoading]=useState(false)
     
 
     //this will confirm that is user loged in or not 
@@ -23,7 +24,9 @@ useEffect(()=>{
         <ChatContext.Provider value={{user,
                                      setUser,
                                      searchedUserResult,
-                                     setSearchedUserResult}}>{children}</ChatContext.Provider>
+                                     setSearchedUserResult,
+                                     isLoading,
+                                     setLoading}}>{children}</ChatContext.Provider>
     )
 }
 

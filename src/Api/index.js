@@ -29,6 +29,7 @@ if(body){
 }
     try {
       const res=  await fetch(url,config);
+      console.log("res from the custom fetch ",res)
       const data=await res.json()
         if(data.success){
             return  {
@@ -71,8 +72,15 @@ const searchUser=(data)=>{
 
 }
 
+const logoutUser=(data)=>{
+    return CustomFetch(url.logoutUser,{
+        method:"post"
+    })
+}
+
 export {
     signup,
     login,
-    searchUser
+    searchUser,
+    logoutUser,
 }

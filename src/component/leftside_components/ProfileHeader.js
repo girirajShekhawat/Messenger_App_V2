@@ -1,14 +1,39 @@
 import React, { useState } from 'react'
-import '../.././stylesheet/profileHeader.css'
+import '../.././stylesheet/profileHeader.css';
+import { logoutUser } from '../../Api';
+import { useAppState } from '../../Contex/stateProvider';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader';
 
 export default function ProfileHeader({profile}) {
   const {avatar, name}=profile;
   const [isOpen, setIsopen]=useState(false);
-  
+  const [isPopupOpen, setPopupOpen]=useState(false);
+  const {setUser,user,setLoading,isLoading}=useAppState();
+  const navigate=useNavigate();
   function toggleMenu (){
     console.log(isOpen)
     setIsopen(!isOpen)
   }
+  
+// handling the logout functionality
+async function handleLogout(){
+  setLoading(true)
+   const res= await logoutUser();
+   if(res.success){
+    setLoading(false)
+       localStorage.clear();
+        setUser();
+        navigate("/")
+       console.log("user is logout ")
+   }
+} 
+
+if(isLoading){
+  return(
+    <Loader/>
+  )
+}
   
   return (
     <div className='flex justify-between h-[59px]  bg-[#f0f2f5]' >
@@ -49,7 +74,7 @@ export default function ProfileHeader({profile}) {
             <hr />
             <li>
               <button>
-                <span>Logout</span>
+                <span onClick={handleLogout}>Logout</span>
               </button>
             </li>
           </ul>

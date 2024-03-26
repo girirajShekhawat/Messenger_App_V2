@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'; 
 import { login } from '../Api'; 
 import { tokenName } from '../Api/apiUrl';
+ 
 function SignIn(props) {
     const navigate = useNavigate();
-   const {setUser,user}=useAppState();
+   const {setUser,user,setLoading,isLoading}=useAppState();
     const [error, setError] = useState("");
     const { register, handleSubmit,reset, formState} = useForm();
     const {errors}=formState
-    
     const handleClick=()=>{
         navigate("/signup")
     }
@@ -20,6 +20,7 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
+        setLoading(false)
         console.log(res)
         //setting the user in localStorage and setting it up in the state also
     setUser(res?.data.user)

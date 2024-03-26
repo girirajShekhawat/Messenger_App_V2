@@ -7,13 +7,14 @@ import ContactList from '../component/leftside_components/ContactList';
 import RightComponent from '../component/Rightside_components/ChatSection';
 import { data } from '../component/data';
 import { useAppState } from '../Contex/stateProvider';
+import Loader from '../component/Loader.js';
 function Home() {
     const [searchContact, setSearchContact] = useState("");
     const [showSearchResult, setShowSearchResult] = useState(false);
     const [filteredContact, setFilteredContact] = useState([]);
     const [showRightSide, setRightSide] = useState(false);
     const [selectedContact, setSelectedContact] = useState({});
-    const {user}=useAppState();
+    const {user,isLoading}=useAppState();
      console.log(user)
       // users data
   const { profile } = data;
@@ -46,6 +47,11 @@ function Home() {
     setSelectedContact(contact);
   };
 
+  if(isLoading){
+    return(
+      <Loader/>
+    )
+  }
     return (
         
         <div>
