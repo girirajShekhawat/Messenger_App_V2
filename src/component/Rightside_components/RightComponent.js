@@ -8,12 +8,16 @@ import ChatSection from './ChatSection'
 export default function RightComponent(props) {
     const {contact,userDp}=props;
 const {name,image}=props.contact;
+console.log("this is from the right side")
   return (
 
 <div>
-    <ContactHeader name={name} image={image}/>
-   <ChatSection contact={contact} userDp={userDp} />
+   
   
 </div>
   )
 }
+
+//<ContactHeader name={name} image={image}/>
+    
+//<ChatSection contact={contact} userDp={userDp} />

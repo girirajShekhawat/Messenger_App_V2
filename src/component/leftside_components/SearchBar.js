@@ -6,28 +6,23 @@ import { useAppState } from '../../Contex/stateProvider';
 export default function SearchBar(props) {
   const {handleSearch ,searchContact}=props
    const [search,setSearch]=useState("");
-   const [searchResult,setSearchResult]=useState()
    const{setSearchedUserResult}=useAppState();
 
    async function searchUserInDb(){
     const data= await searchUser(search);
      if(data){
-      //setSearchResult(data.users)
       console.log("this is user search result" ,Array.isArray(data.data.users), data.data.users)
      setSearchedUserResult(data.data.users)
       handleSearch(data.data.users)
      }
   }
-
+ 
     const handleUserSearch=(event)=>{
       const value=event.target.value
       setSearch(value)
       searchUserInDb()
      }
-  
-
-
-    
+ 
   return (
     <>
    

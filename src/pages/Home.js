@@ -80,7 +80,7 @@ function Home() {
       </div>
       {showRightSide ? (
         <div className="rightSide">
-          <RightComponent contact={selectedContact} userDp={profile.image} />
+         <RightComponent contact={selectedContact} userDp={profile.image} />
         </div>
       ) : (
         <div></div>
@@ -92,3 +92,5 @@ function Home() {
 }
 
 export default Home;
+
+ 

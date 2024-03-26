@@ -16,6 +16,8 @@ export default function ChatSection(props) {
     setChat(chatlog);
   }, [props]);
 
+  console.log("this is from the right side")
+
   // function for realtime timestamps for new message
   let currenttime;
 
