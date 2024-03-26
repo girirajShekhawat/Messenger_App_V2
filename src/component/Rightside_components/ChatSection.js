@@ -16,7 +16,7 @@ export default function ChatSection(props) {
     setChat(chatlog);
   }, [props]);
 
-  console.log("this is from the right side")
+ 
 
   // function for realtime timestamps for new message
   let currenttime;
@@ -61,7 +61,15 @@ export default function ChatSection(props) {
 
   return (
     <div className='ChatSection'>
-      <div className='message-box'>
+      
+      <MessageInputBox handleSendMsg={handleSendMsg} />
+    </div>
+  );
+}
+
+
+
+  /*<div className='message-box'>
         {chat.length > 0 ? (
           // then we will show the messages
           <>
@@ -78,8 +86,4 @@ export default function ChatSection(props) {
             <div></div>
           </>
         )}
-      </div>
-      <MessageInputBox handleSendMsg={handleSendMsg} />
-    </div>
-  );
-}
+      </div>*/

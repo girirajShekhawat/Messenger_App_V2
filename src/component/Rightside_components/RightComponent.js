@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ContactHeader from './ContactHeader'
 import ChatSection from './ChatSection'
  
@@ -8,12 +8,14 @@ import ChatSection from './ChatSection'
 export default function RightComponent(props) {
     const {contact,userDp}=props;
 const {name,image}=props.contact;
-console.log("this is from the right side")
+useEffect(()=>{
+  console.log("this is from the right side")
+})
+ 
   return (
 
 <div>
-   
-  
+  <p>this is from the right component</p>
 </div>
   )
 }
