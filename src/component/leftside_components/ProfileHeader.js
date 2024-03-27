@@ -5,11 +5,13 @@ import { useAppState } from '../../Contex/stateProvider';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader';
 import UpdatePassword from '../UpdatePassword';
+import UpdateUser from '../UpdateUser';
 
 export default function ProfileHeader({profile}) {
   const {avatar, name}=profile;
   const [isOpen, setIsopen]=useState(false);
-  const [isPopupOpen, setPopupOpen]=useState(false);
+  const [isPasswordUpdatePageOpen, setPasswordUpdatePage]=useState(false);
+  const [isUserUpdatePageOpen, setUserUpdatePage]=useState(false)
   const {setUser,user,setLoading,isLoading}=useAppState();
   const navigate=useNavigate();
 
@@ -17,13 +19,24 @@ export default function ProfileHeader({profile}) {
     setIsopen(!isOpen)
   }
 
-  function togglePopup (){
-    setPopupOpen(!isPopupOpen)
+  function togglePasswordUpdatePage (){
+    setPasswordUpdatePage(!isPasswordUpdatePageOpen)
+    setIsopen(false)
   }
 
+  function toggleUserUpdatePage (){
+    setUserUpdatePage(!isUserUpdatePageOpen)
+    setIsopen(false)
+  }
+
+  // this will handle the exit from the update password page ,update user page
   function handleClickOnCross (){
-    console.log("hello from the handleClickOnCross")
-    setPopupOpen(false)
+    if(isPasswordUpdatePageOpen){
+      setPasswordUpdatePage(false)
+    }
+    if(isUserUpdatePageOpen){
+      setUserUpdatePage(false)
+    }
   }
   
 // handling the logout functionality
@@ -50,6 +63,8 @@ if(isLoading){
 }
   
   return (
+    <>
+    
     <div className='flex justify-between h-[59px]  bg-[#f0f2f5] ' >
  <div className='  px-[16px] py-[10px]   '>
 
@@ -70,8 +85,8 @@ if(isLoading){
           <legend>Actions</legend>
           <ul>
             <li>
-              <button>
-                <span onClick={togglePopup}>Update Password</span> 
+              <button  onClick={togglePasswordUpdatePage}>
+                <span >Update Password</span> 
               </button>
             </li>
             <hr />
@@ -81,14 +96,14 @@ if(isLoading){
               </button>
             </li>
             <li>
-              <button>
+              <button onClick={toggleUserUpdatePage}>
                 <span>Edit User</span>
               </button>
             </li>
             <hr />
             <li>
-              <button>
-                <span onClick={handleLogout}>Logout</span>
+              <button onClick={handleLogout}>
+                <span>Logout</span>
               </button>
             </li>
           </ul>
@@ -96,14 +111,27 @@ if(isLoading){
       )}
     </label>
     </div> 
-    {isPopupOpen && 
-      <div className='z-10'>
-        <div className='flex justify-center' >
+
+     <div>
+     {isPasswordUpdatePageOpen && 
+      <div className='z-10 '>
+        <div className='' >
          <UpdatePassword handleClickOnCross={handleClickOnCross}/>
           </div>
       </div>
       }
-    </div>
+     </div>
+     <div>
+      {isUserUpdatePageOpen && 
+       <div className='z-20'>
+        <UpdateUser handleClickOnCross={handleClickOnCross}/>
+        </div>
+        }
+     </div>
+    
+       </div>
+    
+    </>
     
   )
 }
