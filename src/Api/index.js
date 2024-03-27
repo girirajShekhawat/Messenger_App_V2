@@ -78,9 +78,15 @@ const logoutUser=(data)=>{
     })
 }
 
+const updatePassword=(data)=>{
+    return CustomFetch(url.passwordUpdate,
+        {body:data,
+        method:"post"})
+}
 export {
     signup,
     login,
     searchUser,
     logoutUser,
+    updatePassword
 }

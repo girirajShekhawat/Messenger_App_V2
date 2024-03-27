@@ -26,7 +26,7 @@ export default function SearchBar(props) {
   return (
     <>
    
-    <div className=' flex flex-row h-[49px] bg-white pl-[12px] pr-[20px] items-center drop-shadow-[0_0px_1px_rgba(0,0,0,0.07)] ' >
+    <div className=' flex flex-row h-[49px] bg-white pl-[12px] pr-[20px] items-center drop-shadow-[0_0px_1px_rgba(0,0,0,0.07)] z-10' >
         <form className='flex h-[35px] bg-[#f0f2f5]  w-full  pr-[32px] items-center rounded-[8px]'>
             <IoMdSearch className='h-[24px] w-[24px] ml-[15px] mr-[27px] text-gray-500'/>
             <input type='text' placeholder=' Search By Name' id='name' name='name' className='  bg-[#f0f2f5] focus:outline-none w-full'

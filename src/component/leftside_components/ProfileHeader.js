@@ -4,6 +4,7 @@ import { logoutUser } from '../../Api';
 import { useAppState } from '../../Contex/stateProvider';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader';
+import UpdatePassword from '../UpdatePassword';
 
 export default function ProfileHeader({profile}) {
   const {avatar, name}=profile;
@@ -11,9 +12,18 @@ export default function ProfileHeader({profile}) {
   const [isPopupOpen, setPopupOpen]=useState(false);
   const {setUser,user,setLoading,isLoading}=useAppState();
   const navigate=useNavigate();
+
   function toggleMenu (){
-    console.log(isOpen)
     setIsopen(!isOpen)
+  }
+
+  function togglePopup (){
+    setPopupOpen(!isPopupOpen)
+  }
+
+  function handleClickOnCross (){
+    console.log("hello from the handleClickOnCross")
+    setPopupOpen(false)
   }
   
 // handling the logout functionality
@@ -27,7 +37,11 @@ async function handleLogout(){
         navigate("/")
        console.log("user is logout ")
    }
-} 
+}
+
+
+ 
+
 
 if(isLoading){
   return(
@@ -36,7 +50,7 @@ if(isLoading){
 }
   
   return (
-    <div className='flex justify-between h-[59px]  bg-[#f0f2f5]' >
+    <div className='flex justify-between h-[59px]  bg-[#f0f2f5] ' >
  <div className='  px-[16px] py-[10px]   '>
 
 <img  src={avatar} className='h-[40px] w-[40px] rounded-full' alt='Dp'/>
@@ -57,7 +71,7 @@ if(isLoading){
           <ul>
             <li>
               <button>
-                <span>Update Password</span>
+                <span onClick={togglePopup}>Update Password</span> 
               </button>
             </li>
             <hr />
@@ -81,7 +95,14 @@ if(isLoading){
         </nav>
       )}
     </label>
-    </div>
+    </div> 
+    {isPopupOpen && 
+      <div className='z-10'>
+        <div className='flex justify-center' >
+         <UpdatePassword handleClickOnCross={handleClickOnCross}/>
+          </div>
+      </div>
+      }
     </div>
     
   )
