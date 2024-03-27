@@ -114,20 +114,23 @@ if(isLoading){
 
      <div>
      {isPasswordUpdatePageOpen && 
-      <div className='z-10 '>
-        <div className='' >
+      <div className='z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50'>
+        <div className='bg-white p-4 rounded-lg' >
          <UpdatePassword handleClickOnCross={handleClickOnCross}/>
           </div>
       </div>
       }
      </div>
      <div>
-      {isUserUpdatePageOpen && 
-       <div className='z-20'>
+      {isUserUpdatePageOpen &&
+       <div className='z-10 absolute top-0 left-0 w-full h-full flex justify-center items-center bg-gray-800 bg-opacity-50'> 
+       <div className='bg-white p-4 rounded-lg'>
         <UpdateUser handleClickOnCross={handleClickOnCross}/>
+        </div>
         </div>
         }
      </div>
+  
     
        </div>
     
