@@ -6,6 +6,7 @@ export const url={
     searchUser:`${BaseUrl}api/v1/user`,
     logoutUser:`${BaseUrl}api/v1/user/logout`,
     passwordUpdate:`${BaseUrl}api/v1/user/updatePassword`,
+    userUpdate:`${BaseUrl}api/v1/user/updateUser`
 }
 
 export const tokenName="access_token"

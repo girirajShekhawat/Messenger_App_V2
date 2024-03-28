@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { } from '../Api/index';
 import { RxCross1 } from "react-icons/rx";
 import { useAppState } from '../Contex/stateProvider';
+import { updateUser } from '../Api/index';
+import { json } from 'react-router-dom';
 
 function UpdateUser(props) {
-    const {user}=useAppState();
+    const {user,setUser}=useAppState();
 
     const intialState={  
         name:"",
@@ -23,20 +25,34 @@ function UpdateUser(props) {
     }
  
 
-    async function handleUpdate() {
-        console.log(user)
+    async function handleUpdate(event) {
+        event.preventDefault();
         if(!userDetail.email || !userDetail.name){
-            // send a flash message that password is not there 
+            // send a flash message that user name or email is not there 
             console.log("please fill all the filed")
             return ;
         }
+
+        if(userDetail.name===user.name && userDetail.email===user.email){
+            // send a flash msg that edit any of the name or email
+            console.log("please fill all the field");
+            return;
+        }
         
 
-        // const res = await   ( userDetail);
-        // if(res.success){
-        //     setUserDetail(intialState);
-        //     handleClickOnCross();
-        // }
+        const res = await  updateUser(userDetail);
+
+        if(res.success){
+             // updating the user state 
+             user.name=userDetail.name;
+             user.email=userDetail.email;
+
+              setUser(user)
+              //updating the user in localStorage 
+              localStorage.setItem("userInfo",JSON.stringify(user))
+             setUserDetail(intialState);
+              handleClickOnCross();
+        }
 
      // send the flash that there is an error 
      
@@ -52,8 +68,9 @@ function UpdateUser(props) {
              <RxCross1 onClick={()=>(handleClickOnCross())}/>
              </div>
             < h1 className='text-center font-extrabold'>Update Your Details</h1>
-             
+            <form onSubmit={handleUpdate}>
             <div className='mt-[30px]  ml-[30px] '>
+                
                 <div className='mt-[5px] '> 
                 <label htmlFor="name" className=''>Name</label><br/>
                 <input className='mt-[5px]  bg-gray-200 rounded-md py-[5px] px-[10px] focus:outline-none'
@@ -61,7 +78,7 @@ function UpdateUser(props) {
                     placeholder={user.name}
                     name='name'
                     id='name'
-                    pattern='^[A-Za-z\s]+$ {3,}'
+                    pattern='^[A-Za-z\s]{3,}$'
                     value={ userDetail.name}
                     onChange={handleChange}
                 />
@@ -77,14 +94,17 @@ function UpdateUser(props) {
                     onChange={handleChange}
                 />
                 </div>
+                
                 </div>
              
 
             <div className="text-left mt-4 ml-[31px]">
-                <button className="bg-[#00a884]   text-white font-bold py-1 px-3 rounded" onClick={handleUpdate}>
+                <button className="bg-[#00a884]   text-white font-bold py-1 px-3 rounded" type='submit'  >
                     Update
                 </button>
+                
             </div>
+            </form>
             </div>
         </div>
     );
