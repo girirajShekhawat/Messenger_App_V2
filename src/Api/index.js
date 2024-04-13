@@ -24,10 +24,10 @@ const config={
 }
 
 if(body){
-    config.body=JSON.stringify(body)
- 
+    config.body=JSON.stringify(body);
 }
     try {
+        
       const res=  await fetch(url,config);
       console.log("res from the custom fetch ",res)
       const data=await res.json()
@@ -50,6 +50,7 @@ if(body){
 }
 
 
+// functions for user related fetching 
 const signup=(data)=>{
     
     return CustomFetch(url.signup,{
@@ -90,11 +91,40 @@ const updateUser=(data)=>{
         body:data
     })
 }
+
+// function for the chat related fetching 
+const allChatOfUser=(data)=>{
+    return CustomFetch(url.allChatFetching,{
+        method:"get"
+     })
+}
+
+const fetchChat=(data)=>{
+    console.log(typeof data)
+    return CustomFetch(url.getChat,{
+        method:"post",
+        body:data
+    })
+        
+    
+}
+
+
+
+
+
+
+
+
+
+
 export {
     signup,
     login,
     searchUser,
     logoutUser,
     updatePassword,
-    updateUser
+    updateUser,
+    allChatOfUser,
+    fetchChat
 }

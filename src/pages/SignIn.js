@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { useAppState } from '../Contex/stateProvider'; 
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'; 
-import { login } from '../Api'; 
+import { login,allChatOfUser} from '../Api'; 
 import { tokenName } from '../Api/apiUrl';
  
 function SignIn(props) {
     const navigate = useNavigate();
-   const {setUser,user,setLoading,isLoading}=useAppState();
+   const {setUser,user,setLoading,isLoading,setChat,chat}=useAppState();
     const [error, setError] = useState("");
     const { register, handleSubmit,reset, formState} = useForm();
     const {errors}=formState
@@ -20,17 +20,30 @@ function SignIn(props) {
         
     const res=await login(data)
       if(res.success){
-        setLoading(false)
-        console.log(res)
-        //setting the user in localStorage and setting it up in the state also
+//setting the user in localStorage and setting it up in the state also
     setUser(res?.data.user)
-   
     localStorage.setItem("userInfo",JSON.stringify(res.data.user))
-    localStorage.setItem(tokenName,res.data.accessToken)
+    localStorage.setItem(tokenName,res.data.accessToken);
+    fetchAlltheChats()
         reset();
-        navigate("/home")
+        navigate("/home");
+        setLoading(false);
       }
     };
+
+
+//fetching all the  chats for  the logined user 
+    async function fetchAlltheChats(){
+
+       const res= await allChatOfUser();
+       if(res.success){
+        const chats= res?.data.chat
+        console.log(chats)
+       setChat([...chats]);
+       
+       }
+ 
+    }
 
     return (
         <div className='h-screen flex justify-center items-center bg-gradient-to-r from-[#00a884] from-50% to-[#e1e1de] to-10% '>
